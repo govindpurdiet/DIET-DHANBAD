@@ -1,0 +1,331 @@
+body {
+    position: relative;
+    padding: 0;
+    margin: 0;
+    font-family: 'Courier New', Courier, monospace;
+    font-style: normal;
+}
+
+/*-------------------------------------------------------------------------------------------------------*/
+.header {
+    display: flex;
+    position: relative;
+    justify-content: space-around;
+    width: 100%;
+    height: 50px;
+    align-items: center;
+}
+
+.header>a {
+    color: white;
+    text-decoration: none;
+    height: 20px;
+}
+
+.ribbon {
+    width: 100%;
+    height: 30px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background-color:gray;
+}
+
+.ribbon>p {
+    color: azure;
+    text-decoration: none;
+    margin: 10px;
+}
+
+.ribbon>img {
+    height: 25px;
+    width: 25px;
+}
+
+.college-logo {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    margin-right: 25px;
+    margin-left: 10px;
+}
+
+/*-------------------------------------------------------------------------------------------------------*/
+
+.footer {
+    position: relative;
+    display: flex;
+    height: 355px;
+    width: 100%;
+    top: 100%;
+    background-color: blue;
+}
+
+.government-links {
+    width: 33.33%;
+    margin-right: 50px;
+}
+
+.self-links {
+    width: 33.33%;
+}
+
+.info {
+    width: 33.33%;
+}
+
+.self-links>h2 {
+    margin-top: 30px;
+    color: white;
+}
+
+.government-links>h2 {
+    margin-top: 30px;
+    color: white;
+}
+
+.vertical-line {
+    margin-top: 30px;
+    position: relative;
+    border-left: 1.5px solid white;
+    height: 300px;
+    margin-right: 15px;
+}
+
+li {
+    list-style: none;
+    text-align: center;
+    color: white;
+    margin-bottom: 3px;
+}
+
+.government-links a {
+    text-decoration: none;
+    color: white;
+}
+
+.government-links a:visited {
+    color: aliceblue;
+}
+
+.ft-logo {
+    margin: 30px;
+}
+
+.info>p {
+    color: white;
+    margin-left: 10px;
+}
+
+hr {
+    background-color: white;
+    border: none;
+    height: 2px;
+}
+
+.footer-links {
+    display: flex;
+    align-items: center;
+    height: 80px;
+    background-color: darkblue;
+    justify-content: space-around;
+}
+
+.footer-links>p {
+    margin-left: 20px;
+    color: white;
+}
+
+.social-container {
+    width: 33.34%;
+    position: relative;
+    padding: 20px;
+    display: flex;
+    gap: 15px;
+    justify-self:flex-end;
+    justify-content: space-between;
+}
+
+.social-icon svg {
+    width: 30px;
+    height: 30px;
+    transition: transform 0.2s, opacity 0.2s;
+}
+
+.social-icon:hover svg {
+    transform: scale(1.1);
+    /* Slight zoom on hover */
+    opacity: 0.8;
+    /* Slight fade on hover */
+}
+
+/*------------------------------------------------------------------------------------------------------*/
+.banner {
+    display: flex;
+    align-items: center;
+    background-color: blueviolet;
+    height: 120px;
+    width: 100%;
+}
+
+.title {
+    font-size: 20px;
+    font-weight: 900;
+    color: white;
+}
+
+/*--------------------------------------------------------------------------------------------*/
+.slider1 {
+    height: 450px;
+    width: 100%;
+}
+
+/*---------------------------------------------------------------------------------------------*/
+.Achievements {
+    height: 100px;
+    width: 100%;
+    background-color: aquamarine;
+}
+
+/*---------------------------------------------------------------------------------------------*/
+h2 {
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+/*---------------------------------------------------------------------------------------------*/
+.Notice {
+    display: flex;
+    height: 400px;
+    width: 98%;
+    justify-self: center;
+    margin: 10px;
+    border-radius: 30px;
+    border: 1px solid black;
+    box-shadow: 5px 5px gray;
+}
+
+.notice-bar {
+    display: flex;
+    height: 50px;
+    width: 100%;
+    background-color: whitesmoke;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px gray;
+    cursor: pointer;
+}
+
+/*--------------------------------------------------------------------------------------------*/
+.contact-box {
+    display: flex;
+    align-items: center;
+    height: 450px;
+}
+
+.college-location {
+    height: 350px;
+    width: 350px;
+
+}
+
+
+
+/*---------------------------------------------------------------------------------------------*/
+/* Full-Width Dotted Background Container */
+.Principal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Centers the content horizontally */
+    gap: 40px;
+    padding: 60px 20px;
+    /* Generous top/bottom padding */
+
+    width: 100%;
+    /* Forces the section to span the full width */
+    box-sizing: border-box;
+    /* Ensures padding doesn't cause a horizontal scrollbar */
+
+    /* The Dotted Background */
+    background-color: #f4f6f8;
+    /* background-image: radial-gradient(#bdc3c7 2px, transparent 2px); */
+    background-size: 20px 20px;
+}
+
+/* Photo Styling */
+.photo-container {
+    flex-shrink: 0;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 8px solid #ffffff;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.principal-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Message Box Styling */
+.message-container {
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 35px;
+    border-radius: 12px;
+    max-width: 700px;
+    height: 300px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.message-container h2 {
+    margin-top: 0;
+    color: #2c3e50;
+    font-family: Arial, sans-serif;
+}
+
+.message-container p {
+    color: #555;
+    line-height: 1.6;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+}
+
+.signature {
+    font-style: italic;
+    font-weight: bold;
+    text-align: right;
+    margin-bottom: 0;
+    color: #2c3e50 !important;
+}
+
+/* Responsive Design for Mobile Devices */
+@media (max-width: 768px) {
+    .principal-section {
+        flex-direction: column;
+        text-align: center;
+        padding: 40px 15px;
+    }
+
+    .signature {
+        text-align: center;
+    }
+}
+
+/*---------------------------------------------------------------------------------------------*/
+.college-photo img {
+    height: 500px;
+}
+
+/*----------------------------------------------------------------------------------------------*/
+.carousel-item>img {
+    width: 100%;
+}
+
+/*---------------------------------------------------------------------------------------------*/
+
+

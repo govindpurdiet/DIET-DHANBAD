@@ -1,0 +1,50 @@
+.video-carousel-wrapper {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.video-box {
+    flex: 1;
+    width: 570px;
+    height: 330px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Carousel styling */
+#carouselSecond {
+    flex: 1;
+    width: 570px;
+    height: 330px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Independent styling for carousel images */
+#carouselSecond .carousel-item img {
+    width: 100%;
+    /* fit inside carousel */
+    height: 100%;
+    /* fill carousel height */
+    object-fit: cover;
+    /* match video height */
+    border: 3px solid #ff5722;
+    /* orange border just for carousel */
+}
+
+.events {
+    display: flex;
+    height: 400px;
+    width: 98%;
+    flex: 1;
+    justify-content: center;
+    justify-self: center;
+    margin: 10px;
+    border-radius: 30px;
+    border: 1px solid black;
+    box-shadow: 5px 5px gray;
+    align-items: center;
+    gap: 30px;
+}

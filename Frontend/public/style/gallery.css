@@ -1,0 +1,28 @@
+.hidden {
+    display: none;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, auto);
+    width: 100%;
+    margin: 5px;
+    gap: 10px;
+}
+
+.gallery-year {
+    justify-self: center;
+    font-size: 50px;
+}
+
+.gallery-title {
+    color: blue;
+}
+
+.gallery-img {
+    position: relative;
+    height: 300px;
+    width: 100%;
+    border: 2px solid greenyellow;
+}

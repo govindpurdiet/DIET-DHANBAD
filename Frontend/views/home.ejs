@@ -1,0 +1,63 @@
+<%- include("partials/header.ejs") %>
+    <div class="college-photo">
+        <%- include("partials/carousel1.ejs") %>
+    </div>
+    <div class="Achievements">
+        <h2>Our Achievement</h2>
+    </div>
+
+    <div class="academic-head">
+        <h2>Academic Heads</h2>
+        <div class="Principal">
+            <% staff.forEach(st=> { %>
+                <% if (st.type==="principal" ) { %>
+                    <div class="photo-container">
+                        <img src="<%= st.url %>" alt="Principal's Photo" class="principal-photo">
+                    </div>
+                    <% } %>
+
+                        <% if (st.type==="principal" ) { %>
+                            <div class="message-container">
+                                <h2>Message from the Principal</h2>
+                                <p>
+                                    <%= st.message %>
+                                </p>
+                                <p class="signature">- <%= st.name %>
+                                </p>
+                            </div>
+                            <% } %>
+                                <% }) %>
+        </div>
+        <br />
+        <div class="Vice-principal Principal">
+            <% staff.forEach(st=> { %>
+                <% if (st.type==="inCharge-principal" ) { %>
+                    <div class="photo-container">
+                        <img src="<%= st.url %>" alt="Principal's Photo" class="principal-photo">
+                    </div>
+                    <% } %>
+
+
+
+                        <% if (st.type==="inCharge-principal" ) { %>
+                            <div class="message-container">
+                                <h2>Message from the In-Charge Principal</h2>
+                                <p>
+                                    <%= st.message %>
+                                </p>
+                                <p class="signature">- <%= st.name %>
+                                </p>
+                            </div>
+                            <% } %>
+                                <% }) %>
+        </div>
+    </div>
+    <h2>Events</h2>
+    <div class="events">
+        <%- include("partials/carousel2.ejs") %>
+    </div>
+    <h2>Notice</h2>
+    <div class="Notice">
+        <hr>
+    </div>
+    <%- include("partials/footer.ejs") %>

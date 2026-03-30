@@ -1,0 +1,23 @@
+<%- include("partials/header.ejs") %>
+    <div class="contact-box">
+        <div class="innerContact">
+            <form action="/sendMessage" method="post">
+                <div class="inputField">
+                    <input type="text" placeholder="Enter your name">
+                    <input type="tel" name="" id="" placeholder="Enter your mobie no.">
+                    <input type="email" name="" id="" placeholder="Enter your email id">
+                    <textarea name="" id="" cols="30" rows="3" placeholder="Enter your message"></textarea>
+                    <input type="submit" value="Submit">
+                </div>
+
+            </form>
+        </div>
+        <div class="map-container">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3649.6622889097202!2d86.52370787389556!3d23.8306050856952!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f6b9809c79efe5%3A0xa3571a18b5adbe52!2sDIET%20TEACHER%20TRANING%20COLLEGE!5e0!3m2!1sen!2sin!4v1771683552541!5m2!1sen!2sin"
+                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade" class="college-location"></iframe>
+        </div>
+
+    </div>
+    <%- include("partials/footer.ejs") %>

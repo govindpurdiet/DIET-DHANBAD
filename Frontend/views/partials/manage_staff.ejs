@@ -1,0 +1,19 @@
+<h2>Staff Management</h2>
+<form action="/upload" method="post" id="staff" enctype="multipart/form-data">
+    <div class="staff-upload image-upload">
+        <input type="text" name="staff_name" placeholder="Enter the name">
+        <input type="email" name="staff_email" placeholder="Enter the email">
+        <input type="text" name="staff_number" placeholder="Enter the phone">
+        <select name="designation" id="designation" onchange="add_photo(); add_designation()">
+            <option value="XXXX" selected>Select Designation</option>
+            <option value="clerk">Clerk</option>
+            <option value="principal">Principal</option>
+            <option value="inCharge-principal">In Charge Principal</option>
+            <option value="new_designation">Add New Designation</option>
+        </select>
+        <input type="text" name="message" id="message" class="hidden" placeholder="Enter the message">
+        <input type="text" name="new_designation" placeholder="Enter designation" id="new_designation" class="hidden">
+        <input type="file" name="image" id="staff_image" class="hidden">
+        <input type="submit" name="upload" value="Add_Staff" placeholder="Upload">
+    </div>
+</form>

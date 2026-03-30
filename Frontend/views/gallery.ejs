@@ -1,0 +1,20 @@
+<%- include("partials/header.ejs") %>
+    <% year.forEach(yr=> { %>
+        <div class="gallery-year">
+            <%= yr %>
+        </div>
+        <% title.forEach(tl=> { %>
+            <% if (tl.year===yr) { %>
+                <h2 class="gallery-title">
+                    <%= tl.title %>
+                </h2>
+                <% } %>
+                <div class="container">
+                    <% photos.forEach(photo=> { %>
+                        <% if (photo.year===yr && photo.title===tl.title) { %>
+                                 <img src="<%= photo.url %>" class="gallery-img">
+                            <% } %>
+                                <% }) %></div>
+                                    <% }) %>
+                                        <% }) %>
+                                            <%- include("partials/footer.ejs") %>

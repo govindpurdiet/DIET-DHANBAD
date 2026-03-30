@@ -1,0 +1,76 @@
+
+body{
+    margin: 0;
+}
+.image-upload{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 50%;
+    left: 25%;
+    align-items: center;
+}
+
+.image-upload > input{
+    width: 250px;
+    margin: 10px;
+    border-radius: 20px;
+    padding-left: 10px;
+}
+
+/*-------------------------------------------------------------------------------------------------*/
+.file-upload{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 50%;
+    left: 25%;
+    align-items: center;
+    border-radius: 10px;
+    background-color: blue;
+    z-index: 3;
+}
+
+.file-upload > input{
+    width: 250px;
+    margin: 10px;
+    border-radius: 20px;
+    padding-left: 10px;
+}
+
+.login{
+    width: 300px;
+    height: 300px;
+    display: flex;
+    left: 40%;
+    justify-content: center;
+    position: relative;
+    border-radius: 30px;
+    top: 75px;
+    background-color: rgba(224, 225, 225, 0.142);
+    align-items: center;
+    box-shadow: 2px 1px 2px gray;
+    
+}
+
+.login-card{
+    width: 300px;
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+}
+
+.login-card > input{
+    width: 200px;
+    height: 35px;
+    border-radius: 20px;
+    padding-left: 30px;
+    border: 0;
+    background-color: rgba(137, 43, 226, 0.094);
+}
+
+.login-card > button{
+    width: 80px;
+    height: 35px;
+    border-radius: 10px;
+}

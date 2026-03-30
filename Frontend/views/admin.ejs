@@ -1,0 +1,27 @@
+<%- include("partials/header.ejs") %>
+    <h2>Photo Management</h2>
+    <form action="/upload" method="post" id="Photo-Upload" enctype="multipart/form-data">
+        <div class="image-upload">
+            <select name="year" id="year" onchange="add_year()">
+                <option value="XXXX" selected>Select Year</option>
+                <% year.forEach(yr => { %>
+                 <option value="<%= yr %>"><%= yr %></option>
+                <% }) %>
+                <option value="0">New Year</option>
+            </select>
+            <input type="text" name="new_year" class="hidden" placeholder="Enter the year" id="new_year">
+            <select name="title" id="title" onchange="add_title()">
+                <option value="XXXX" selected>Select Title</option>
+                <% title.forEach(t => { %>
+                 <option value="<%= t %>"><%= t %></option>
+                <% }) %>
+                <option value="0">New Title</option>
+            </select>
+            <input type="text" name="new_title" class="hidden" placeholder="Enter the title" id="new_title">
+            <input type="file" name="image" id="image">
+            <input type="submit" name="upload" value="Upload_Image" placeholder="Upload">
+        </div>
+    </form>
+    <%- include("partials/manage_staff.ejs") %>
+    <%- include("partials/manage_notice.ejs") %>
+    <%- include("partials/footer.ejs") %>
