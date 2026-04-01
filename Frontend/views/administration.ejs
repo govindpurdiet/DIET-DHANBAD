@@ -1,0 +1,32 @@
+<%- include("partials/header.ejs") %>
+
+<h1>Our Adminstration</h1>
+
+<h2>Head</h2>
+<div class="heads">
+<div class="head-container">
+    <% head.forEach(hd => { %>
+        <div>
+            <img src="<%= hd.url %>" alt="" class="head-image">
+            <p><%= hd.name %></p>
+            <p><%= hd.type %></p>
+        </div>
+    <% }) %>
+</div>
+</div>
+
+<h2>Non-Teaching Staff</h2>
+<div class="staff-table">
+<div>Name</div><div>Designation</div><div>Mobile No</div>
+<% staff.forEach(st => { %>
+ <div><%= st.name %></div><div><%= st.type %></div><div><%= st.mobile %></div>
+<% }) %>
+</div>
+
+
+
+
+
+
+
+<%- include("partials/footer.ejs") %>

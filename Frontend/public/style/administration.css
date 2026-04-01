@@ -1,0 +1,43 @@
+.staff-table{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto;
+    width: 80%;
+    position: relative;
+    left: 10%;
+    justify-content: center;
+    margin: 20px;
+}
+
+.staff-table > div{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    border: 1px solid brown;
+}
+.head-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    width: 80%;
+    position: relative;
+    left: 10%;
+    justify-content: center;
+    margin: 20px;
+}
+
+.head-container > div{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+.head-image{
+    height: 200px;
+    width: 200px;
+}
+
+h1{
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+}

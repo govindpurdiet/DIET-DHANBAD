@@ -8,7 +8,6 @@ import db from "./database/database.js";
 import { Upload } from "./services/upload.js";
 import bcrypt from "bcrypt";
 
-const saltrounds = 10;
 
 
 const app = express();
@@ -34,8 +33,20 @@ async function getTitle() {
 async function getHead(params) {
   const result = await db.query("SELECT * FROM staff");
   const data = [];
-  result.rows.forEach(r=>{
-    if(r.type === "principal" || r.type === "inCharge-principal"){
+  result.rows.forEach(r => {
+    if (r.type === "principal" || r.type === "inCharge-principal") {
+      data.push(r);
+    }
+  })
+  return data;
+}
+
+
+async function getStaff() {
+  const result = await db.query("SELECT * FROM staff");
+  const data = [];
+  result.rows.forEach(r => {
+    if (r.type !== 'principal' && r.type !== 'inCharge-principal' ) {
       data.push(r);
     }
   })
@@ -50,9 +61,9 @@ app.set('views', path.join(__dirname, '..', 'Frontend', 'views'));
 app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, '..', 'Frontend', 'public')));
 
-app.get("/", async(req, res) => {
-  const result = await getHead(); 
-  res.render("home",{staff:result})
+app.get("/", async (req, res) => {
+  const result = await getHead();
+  res.render("home", { staff: result })
 })
 
 app.get("/admin", async (req, res) => {
@@ -64,6 +75,12 @@ app.get("/contact", (req, res) => {
 })
 app.get("/notice", (req, res) => {
   res.render("notice")
+})
+
+app.get("/administration",async(req,res)=>{
+  const head = await getHead();
+  const staff =  await getStaff();
+  res.render("administration.ejs",{staff:staff,head:head})
 })
 
 
@@ -91,58 +108,58 @@ app.post("/upload", upload.single("image"), async (req, res) => {
 
   if (req.body.upload === "Add_Staff") {
     let uploadResult = "";
-    if(req.body.designation === "principal" || req.body.designation === "inCharge-principal"){
+    if (req.body.designation === "principal" || req.body.designation === "inCharge-principal") {
       const b64 = Buffer.from(req.file.buffer).toString("base64");
       const dataURI = "data:" + req.file.mimetype + ";base64," + b64;
       uploadResult = await Upload(dataURI);
     }
     const designation = req.body.new_designation ? req.body.new_designation : req.body.designation;
-    const message = req.body.message ? req.body.message :"";
+    const message = req.body.message ? req.body.message : "";
     const name = req.body.staff_name;
     const email = req.body.staff_email;
     const phone = req.body.staff_number;
     const public_id = uploadResult.public_id;
     const url = uploadResult.url;
-    await db.query("INSERT INTO staff (public_id,name,type,email,mobile,message,url) VALUES($1,$2,$3,$4,$5,$6,$7)", [public_id,name,designation,email,phone,message,url]);
+    await db.query("INSERT INTO staff (public_id,name,type,email,mobile,message,url) VALUES($1,$2,$3,$4,$5,$6,$7)", [public_id, name, designation, email, phone, message, url]);
   }
   res.redirect("/admin");
 })
 
-app.post("/login",async(req,res)=>{
+app.post("/login", async (req, res) => {
   const user = req.body["admin"];
   const password = req.body["password"];
-  const storedAdmin = await db.query("SELECT * FROM admin WHERE admin = $1",[user]);
-  if(storedAdmin.rows.length > 0){
+  const storedAdmin = await db.query("SELECT * FROM admin WHERE admin = $1", [user]);
+  if (storedAdmin.rows.length > 0) {
     const storedPassword = (await db.query("SELECT password FROM admin")).rows[0].password;
-       bcrypt.compare(password, storedPassword, async(err, result) => {
-        if (err) {
-          console.error("Error comparing passwords:", err);
+    bcrypt.compare(password, storedPassword, async (err, result) => {
+      if (err) {
+        console.error("Error comparing passwords:", err);
+      } else {
+        if (result) {
+          const year = await getYear();
+          const tl = await getTitle();
+          const title = [];
+          tl.forEach(t => {
+            title.push(t.title)
+          })
+          res.render("admin.ejs", { year: year, title: title });
         } else {
-          if (result) {
-                      const year = await getYear();
-            const tl = await getTitle();
-            const title = [];
-            tl.forEach(t => {
-              title.push(t.title)
-            })
-            res.render("admin.ejs", { year: year, title: title });
-          } else {
-            res.send("Incorrect Password");
-          }
+          res.send("Incorrect Password");
         }
-      });
+      }
+    });
   }
-  else{
+  else {
     res.send("Invalid username");
   }
 })
 
-app.patch("/update",(req,res)=>{
+app.patch("/update", (req, res) => {
 
 })
 
-app.delete("/delete",(req,res)=>{
-  
+app.delete("/delete", (req, res) => {
+
 })
 app.listen(port, (req, res) => {
   console.log(`Server listening on port ${port}`)
