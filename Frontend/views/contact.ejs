@@ -3,13 +3,16 @@
         <div class="innerContact">
             <form action="/sendMessage" method="post">
                 <div class="inputField">
-                    <input type="text" placeholder="Enter your name">
-                    <input type="tel" name="" id="" placeholder="Enter your mobie no.">
-                    <input type="email" name="" id="" placeholder="Enter your email id">
+                    <input type="text" name="name" placeholder="Enter your name">
+                    <input type="tel" name="phone" id="" placeholder="Enter your mobie no.">
+                    <input type="email" name="email" id="" placeholder="Enter your email id">
+                    <input type="text" name="subject" id="" placeholder="Enter your email id">
                     <textarea name="" id="" cols="30" rows="3" placeholder="Enter your message"></textarea>
-                    <input type="submit" value="Submit">
+                    <button type="submit">Submit</button>
                 </div>
-
+                <% if (locals.Message) { %>
+                 <p><%= locals.Message %></p>
+                <% } %>
             </form>
         </div>
         <div class="map-container">

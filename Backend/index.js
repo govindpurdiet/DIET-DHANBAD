@@ -7,7 +7,7 @@ import multer from "multer";
 import db from "./database/database.js";
 import { Upload } from "./services/upload.js";
 import bcrypt from "bcrypt";
-
+import MailTransport from "./services/mail.js";
 
 
 const app = express();
@@ -46,7 +46,7 @@ async function getStaff() {
   const result = await db.query("SELECT * FROM staff");
   const data = [];
   result.rows.forEach(r => {
-    if (r.type !== 'principal' && r.type !== 'inCharge-principal' ) {
+    if (r.type !== 'principal' && r.type !== 'inCharge-principal') {
       data.push(r);
     }
   })
@@ -77,10 +77,10 @@ app.get("/notice", (req, res) => {
   res.render("notice")
 })
 
-app.get("/administration",async(req,res)=>{
+app.get("/administration", async (req, res) => {
   const head = await getHead();
-  const staff =  await getStaff();
-  res.render("administration.ejs",{staff:staff,head:head})
+  const staff = await getStaff();
+  res.render("administration.ejs", { staff: staff, head: head })
 })
 
 
@@ -159,6 +159,25 @@ app.patch("/update", (req, res) => {
 })
 
 app.delete("/delete", (req, res) => {
+
+})
+
+
+
+app.post("/sendMessage", (req, res) => {
+  const transporter = MailTransport();
+  const mailOptions = {
+    from: 'govindpurdiet@gmail.com' , 
+    to: 'dietdhanbad@gmail.com',                
+    subject: 'Hello from Node.js',              
+    text: 'This is a test email sent using Nodemailer!', 
+  };
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      return console.log('Error occurred:', error.message);
+    }
+    res.json({ Message: "Message Sent" });
+  });
 
 })
 app.listen(port, (req, res) => {
