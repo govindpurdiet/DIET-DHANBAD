@@ -11,8 +11,7 @@ import MailTransport from "./services/mail.js";
 
 
 const app = express();
-const port = 3000;
-
+const PORT = process.env.PORT || 3000;
 async function getPhotos() {
   const result = await db.query("SELECT title,year,url from gallery");
   return result.rows;
@@ -73,8 +72,12 @@ app.get("/admin", async (req, res) => {
 app.get("/contact", (req, res) => {
   res.render("contact")
 })
-app.get("/notice", (req, res) => {
-  res.render("notice")
+app.get("/notice", async(req, res) => {
+  const result = await db.query("SELECT * FROM notice");
+  const notices = result.rows;
+  console.log(notices);
+  console.log(new Date());
+  res.render("notice",{date:new Date(),notice:notices})
 })
 
 app.get("/administration", async (req, res) => {
@@ -94,13 +97,14 @@ app.get("/gallery", async (req, res) => {
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 
-app.post("/upload", upload.single("image"), async (req, res) => {
-
-
+app.post("/upload", upload.fields([{name:"image",name:"notice-doc"}]), async (req, res) => {
+  console.log(req);
+  const gallery_folder = "Gallery";
+  const notice_folder = "Notice";
   if (req.body.upload === "Upload_Image") {
     const b64 = Buffer.from(req.file.buffer).toString("base64");
     const dataURI = "data:" + req.file.mimetype + ";base64," + b64;
-    const uploadResult = await Upload(dataURI);
+    const uploadResult = await Upload(dataURI,gallery_folder,"image");
     const title = req.body.new_title ? req.body.new_title : req.body.title;
     const year = req.body.new_year ? req.body.new_year : req.body.year;
     await db.query("INSERT INTO gallery (public_id,title,year,url) VALUES($1,$2,$3,$4)", [uploadResult.public_id, title, year, uploadResult.url]);
@@ -111,7 +115,7 @@ app.post("/upload", upload.single("image"), async (req, res) => {
     if (req.body.designation === "principal" || req.body.designation === "inCharge-principal") {
       const b64 = Buffer.from(req.file.buffer).toString("base64");
       const dataURI = "data:" + req.file.mimetype + ";base64," + b64;
-      uploadResult = await Upload(dataURI);
+      uploadResult = await Upload(dataURI,gallery_folder,"image");
     }
     const designation = req.body.new_designation ? req.body.new_designation : req.body.designation;
     const message = req.body.message ? req.body.message : "";
@@ -121,6 +125,21 @@ app.post("/upload", upload.single("image"), async (req, res) => {
     const public_id = uploadResult.public_id;
     const url = uploadResult.url;
     await db.query("INSERT INTO staff (public_id,name,type,email,mobile,message,url) VALUES($1,$2,$3,$4,$5,$6,$7)", [public_id, name, designation, email, phone, message, url]);
+  }
+  if (req.body.upload === "addNotice") {
+    console.log("Trying to upload");
+    
+    let uploadResult = "";
+    const description = req.body["description"];
+    const date = req.body["date"];
+    try {
+      const dataURI =  req.files["notice-doc"][0].buffer;
+    uploadResult = await Upload(notice_folder,"raw",dataURI);
+    console.log(uploadResult);
+    } catch (error) {
+      console.log(error);      
+       const result= await db.query("INSERT INTO Notice (description,date,url) VALUES($1,$2,$3)",[description,formattedDate,uploadResult]);
+    }   
   }
   res.redirect("/admin");
 })
@@ -166,20 +185,28 @@ app.delete("/delete", (req, res) => {
 
 app.post("/sendMessage", (req, res) => {
   const transporter = MailTransport();
+  const senderEmail = req.body["email"];
+  const senderName = req.body["name"];
+  const phone = req.body["phone"];
+  const subject = req.body["subject"];
+  const message = req.body["message"];
+
   const mailOptions = {
     from: 'govindpurdiet@gmail.com' , 
-    to: 'dietdhanbad@gmail.com',                
-    subject: 'Hello from Node.js',              
-    text: 'This is a test email sent using Nodemailer!', 
+    to: '2306221@kiit.ac.in',                
+    subject: `${subject}`,              
+    text: `Message sent from ${senderName}\n${senderEmail}\n${phone}`+`${message}`, 
   };
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
       return console.log('Error occurred:', error.message);
     }
-    res.json({ Message: "Message Sent" });
+    res.render( "contact.ejs",{Message: "Message Sent" });
   });
 
 })
-app.listen(port, (req, res) => {
-  console.log(`Server listening on port ${port}`)
-})
+
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});

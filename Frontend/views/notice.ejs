@@ -2,5 +2,13 @@
 <div class="notice-bar" id="past" onclick=""><h2>PAST EVENTS</h2></div>
 <div class="past-notice-list"></div>
 <div class="notice-bar present-upcoming" onclick=""><h2>PRESENT AND UPCOMING EVENTS</h2></div>
-<div class="present-and-upcoming-notice-list"></div>
+
+<div class="present-and-upcoming-notice-list">
+    <div>Title</div><div>Date</div><div>File</div>
+    <% notice.forEach(nt => { %>
+        <% if (nt.date <= locals.date) { %>
+         <div><%= nt.description %></div><div><%=nt.date  %></div><div><a href="<%= nt.url %>">Download</a></div>
+        <% } %>
+    <% }) %>
+</div>
 <%- include("partials/footer.ejs") %>
