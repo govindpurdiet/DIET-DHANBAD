@@ -1,6 +1,6 @@
-function displayPastList(event){
-    document.getElementById("past").classList.add("hide");
+function displayPastList(){
+    document.getElementById("pt-list").classList.toggle("hide");
 }
-function displayPresentAndUpcomingList(event){
-    document.getElementById("present-upcoming").classList.add("hide");
+function displayPresentAndUpcomingList(){
+    document.getElementById("pu-list").classList.toggle("hide");  
 }

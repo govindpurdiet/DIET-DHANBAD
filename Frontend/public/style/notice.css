@@ -1,4 +1,4 @@
-.present-and-upcoming-notice-list{
+.present-and-upcoming-notice-list,.past-notice-list{
     display: grid;
     grid-template-columns: 1fr 0.5fr 0.5fr;
     grid-template-rows: auto;
@@ -10,4 +10,19 @@
     border: 1px solid black;
     display: flex;
     justify-content: center;
+}
+
+.past-notice-list{
+    display: grid;
+    grid-template-columns: 1fr 0.5fr 0.5fr;
+    grid-template-rows: auto;
+    border: 1px solid black;
+    margin: 35px;
+    justify-content: center;
+}
+
+.past-notice-list > div{
+    border: 1px solid black;
+    display: flex;
+    justify-content: center; 
 }

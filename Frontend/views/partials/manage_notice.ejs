@@ -1,14 +1,17 @@
 <h2>Notice Management</h2>
-<select name="editNotice" id="Notice">
+<select name="editNotice" id="Notice" onchange="">
     <option value="X">Select</option>
     <option value="viewNotices">View List</option>
     <option value="addNotice">Add New</option>
 </select>
-<div class="NewNotice">
+<div class="notice-list hide">
+
+</div>
+<div class="NewNotice hide">
     <form action="/upload" method="post" id="staff" enctype="multipart/form-data">
         <div class="file-upload">
             <input type="text" placeholder="Enter notice description" name="description">
-            <input type="date" name="date" id="">
+            <input type="datetime-local" name="date" id="">
             <input type="file" name="notice-doc" id="" accept=".pdf">
             <button type="submit" value="addNotice" name="upload">Upload</button>
         </div>

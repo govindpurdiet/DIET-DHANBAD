@@ -133,12 +133,12 @@ app.post("/upload", upload.fields([{name:"image",name:"notice-doc"}]), async (re
     const description = req.body["description"];
     const date = req.body["date"];
     try {
-      const dataURI =  req.files["notice-doc"][0].buffer;
+    const dataURI =  req.files["notice-doc"][0].buffer;
     uploadResult = await Upload(notice_folder,"raw",dataURI);
     console.log(uploadResult);
     } catch (error) {
       console.log(error);      
-       const result= await db.query("INSERT INTO Notice (description,date,url) VALUES($1,$2,$3)",[description,formattedDate,uploadResult]);
+       const result= await db.query("INSERT INTO Notice (description,date,url) VALUES($1,$2,$3)",[description,date,uploadResult]);
     }   
   }
   res.redirect("/admin");
