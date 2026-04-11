@@ -6,26 +6,33 @@
 
 .inputField input{
     width: 250px;
-    margin: 20px;
-    border: none;
+    margin-top: 30px;
+    border: 1px solid black;
     font-family: monospace;
+    background-color:rgba(177, 232, 232, 0.58);
+    border-radius: 15px;
+    padding-left: 10px;
 }
 
 .inputField textarea{
     width: 250px;
-    margin: 20px;
+    margin-top: 30px;
     resize: none;
+    background-color: rgba(177, 232, 232, 0.58);
+    border-radius: 15px;
+    padding-left: 10px;
 }
 
 .innerContact{
     width: 400px;
-    box-shadow: 0 2px saddlebrown;
+    box-shadow: 1px 1px 1px 1px gray;
     margin: 50px;
-    background-color:  rgba(46, 14, 120, 0.491);
+    background-color:  white;
+    border-radius: 30px;
 }
 
 .map-container {
-    border: 20px solid rgb(46, 14, 120);
+    border: 20px solid rgba(177, 232, 232, 0.58);
     border-radius: 25px;
 }
 
@@ -38,4 +45,6 @@
 }
 .inputField button{
     margin-bottom: 20px;
+    margin-top: 20px;
+    border-radius: 15px;
 }
