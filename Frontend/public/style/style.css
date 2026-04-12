@@ -7,6 +7,9 @@ body {
 }
 
 /*-------------------------------------------------------------------------------------------------------*/
+a{
+    text-decoration: none;
+}
 .header {
     display: flex;
     position: relative;
@@ -33,7 +36,6 @@ body {
 
 .ribbon>p {
     color: azure;
-    text-decoration: none;
     margin: 10px;
 }
 
@@ -331,4 +333,25 @@ h2 {
 
 .hide{
     display: none !important;
+}
+
+
+.facilities-text{
+    padding: 35px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 20px;
+}
+
+.facilities-image{
+    width: 100%;
+    padding: 35px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-row: auto;
+    gap: 25px;
+}
+
+.facilities-image img{
+    height: 300px;
+    width: 100%;
 }

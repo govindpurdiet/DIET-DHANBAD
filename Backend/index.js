@@ -86,7 +86,9 @@ app.get("/administration", async (req, res) => {
   res.render("administration.ejs", { staff: staff, head: head })
 })
 
-
+app.get("/facility",(req,res)=>{
+  res.render("facility.ejs")
+})
 app.get("/gallery", async (req, res) => {
   const photo = await getPhotos();
   const year = await getYear();

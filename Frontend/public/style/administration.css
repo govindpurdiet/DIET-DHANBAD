@@ -14,7 +14,7 @@
     display: flex;
     width: 100%;
     justify-content: center;
-    border: 0.5px solid skyblue;
+    border: 0.5px solid rgb(213, 239, 249);
     align-items: center;
     background-color: beige
 }
