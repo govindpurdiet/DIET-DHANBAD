@@ -31,3 +31,17 @@ function add_designation(){
         document.getElementById("new_designation").classList.add("hidden");
     }
 }
+
+function Notice(){
+    console.log("triggered");
+    const d = document.getElementById("Notice").value;
+    console.log(d);
+    if (d === "addNotice") {
+        document.getElementsByClassName("NewNotice")[0].classList.remove("hide");
+        document.getElementsByClassName("notice-list")[0].classList.add("hide");
+    }
+    else if(d === "viewNotices"){
+        document.getElementsByClassName("NewNotice")[0].classList.add("hide");
+        document.getElementsByClassName("notice-list")[0].classList.remove("hide");
+    }
+}

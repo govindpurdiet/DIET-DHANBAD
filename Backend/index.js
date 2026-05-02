@@ -62,7 +62,9 @@ app.use(express.static(path.join(__dirname, '..', 'Frontend', 'public')));
 
 app.get("/", async (req, res) => {
   const result = await getHead();
-  res.render("home", { staff: result })
+  var no = await db.query("SELECT * FROM notice");
+  const notices = no.rows;
+  res.render("home", { staff: result,date:new Date(),notice:notices})
 })
 
 app.get("/admin", async (req, res) => {
@@ -195,7 +197,7 @@ app.post("/sendMessage", (req, res) => {
 
   const mailOptions = {
     from: 'govindpurdiet@gmail.com' , 
-    to: '2306221@kiit.ac.in',                
+    to: 'dietdhanbad@gmail.com',                
     subject: `${subject}`,              
     text: `Message sent from ${senderName}\n${senderEmail}\n${phone}`+`${message}`, 
   };

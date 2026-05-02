@@ -64,6 +64,17 @@
     </div>
     <h2>Notice</h2>
     <div class="Notice">
-        <hr>
+            <% notice.forEach(nt=> { %>
+                <% if (nt.date>= locals.date) { %>
+                    <div class="inner-not">
+                    <div>
+                        <%=nt.date.toLocaleString() %>
+                    </div>&emsp;-&emsp;<div><a href="<%= nt.url %>">
+                            <%= nt.description %>
+                        </a></div>
+                    </div>
+                    <% } %>
+        <% }) %>
+       
     </div>
     <%- include("partials/footer.ejs") %>

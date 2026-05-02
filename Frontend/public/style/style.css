@@ -210,10 +210,25 @@ h2 {
     width: 98%;
     justify-self: center;
     margin: 10px;
+    flex-direction: column;
+    gap: 30px;
+    padding: 50px;
     border-radius: 30px;
     border: 1px solid black;
     box-shadow: 5px 5px gray;
 }
+
+.inner-not{
+    display: flex;
+    border-bottom:0.5px solid black;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-family: 'Courier New', Courier, monospace;
+}
+.inner-not a{
+    text-decoration: none;
+}
+
 
 .notice-bar {
     display: flex;
