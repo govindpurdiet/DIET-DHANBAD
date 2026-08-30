@@ -6,7 +6,7 @@ function MailTransport() {
             service: 'gmail',
             auth: {
                 user: 'govindpurdiet@gmail.com',
-                pass: 'cdthktayvmmerkcq'
+                pass: ''
             }
         }
     );
